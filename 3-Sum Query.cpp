@@ -1,3 +1,5 @@
+//Help Ashu (HackerEarth)
+
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -101,3 +103,12 @@ int main()
 
     return 0;
 }
+/*
+6
+1 2 3 4 5 6
+4
+1 2 5
+2 1 4
+0 5 4
+1 1 6
+*/
