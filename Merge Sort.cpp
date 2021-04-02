@@ -1,3 +1,5 @@
+1.
+    
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -74,3 +76,82 @@ int main()
 7
 43 2 90 3 8 2 2
 */
+
+2.
+    
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int arr[100001], tem[100001];
+
+void buildTree(int L, int R)
+{
+    if (L == R)
+    {
+        return;
+    }
+
+    int mid = (L + R) / 2;
+    buildTree(L, mid);
+    buildTree(mid+1, R);
+
+    int i = L, j = mid+1, a, b, k = 1, u;
+
+    while(i <= mid && j <= R)
+    {
+        if(arr[i] <= arr[j])
+        {
+            tem[k] = arr[i];
+            i++;
+            k++;
+        }
+        else
+        {
+            tem[k] = arr[j];
+            j++;
+            k++;
+        }
+
+    }
+
+    while(i <= mid)
+    {
+        tem[k] = arr[i];
+        i++; k++;
+    }
+    while(j <= R)
+    {
+        tem[k] = arr[j];
+        j++; k++;
+    }
+    int id = L;
+    for(u = 1; u < k; u++)
+    {
+        arr[id] = tem[u];
+        id++;
+    }
+
+}
+
+int main()
+{
+    int n, i;
+    cin>> n;
+    for(i = 1; i <= n; i++)
+        cin>> arr[i];
+
+    buildTree(1, n);
+
+    for(i = 1; i <= n; i++)
+        cout<< arr[i] << " ";
+
+    cout<< "\n";
+
+    return 0;
+}
+/*
+7
+4 2 9 3 8 7 20
+*/
+
